@@ -6,7 +6,7 @@ Create a pygame session for specific functions
 
 From Pypi:
 
-`py -m pip install PY-GUI`
+`py -m pip install PY_GUI`
 
 From GitHub:
 
@@ -17,16 +17,16 @@ From GitHub:
 You can use the demo one by running:
 
 ```bat
-py -m PY-GUI
+py -m PY_GUI
 ```
 
-Or just `PY-GUI`
+Or just `PY-GUI` in the cmd
 
 Or you can run a custom one from within Python, for example:
 
 ```py
 from PY_GUI import Main
 def parse(text: str) -> str:
-  return text * 2
-Main(parse, name = "Duplicate")
+  return text
+Main(parse, name = "Cat program")
 ```
