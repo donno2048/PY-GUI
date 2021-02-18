@@ -6,11 +6,11 @@ Create a pygame session for specific functions
 
 From Pypi:
 
-`python -m pip install PY-GUI`
+`py -m pip install PY-GUI`
 
 From GitHub:
 
-`python -m pip install git+https://github.com/donno2048/PY-GUI`
+`py -m pip install git+https://github.com/donno2048/PY-GUI`
 
 ## Usage
 

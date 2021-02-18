@@ -1,6 +1,6 @@
 from setuptools import setup,find_packages
 setup(
-    name='PY-GUI',
+    name='PY_GUI',
     version='1.0.0',
     description='Create a pygame session for specific functions',
     long_description=open('README.md').read(),
