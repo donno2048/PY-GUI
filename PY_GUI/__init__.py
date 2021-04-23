@@ -1,5 +1,4 @@
-from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+__import__('os').environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from pygame_gui.elements.ui_window import UIWindow
 from pygame_gui.elements.ui_button import UIButton
 from pygame_gui.elements.ui_text_box import UITextBox
