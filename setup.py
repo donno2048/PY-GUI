@@ -10,6 +10,6 @@ setup(
     license='MIT',
     author='Elisha Hollander',
     classifiers=['Programming Language :: Python :: 3'],
-    install_requires=['pygame==2.0.0', 'pygame-gui'],
+    install_requires=['pygame==2.0.0', 'pygame-gui==0.5.7'],
     entry_points={ 'console_scripts': [ 'PY-GUI=PY_GUI.__main__:main' ] }
 )
