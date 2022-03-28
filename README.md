@@ -4,20 +4,20 @@ Create a pygame session for specific functions
 
 ## install
 
-From Pypi:
+From PyPI:
 
-`py -m pip install PY_GUI`
+`pip3 install PY_GUI`
 
 From GitHub:
 
-`py -m pip install git+https://github.com/donno2048/PY-GUI`
+`pip3 install git+https://github.com/donno2048/PY-GUI`
 
 ## Usage
 
 You can use the demo one by running:
 
 ```bat
-py -m PY_GUI
+python3 -m PY_GUI
 ```
 
 Or just `PY-GUI` in the cmd
