@@ -1,4 +1,7 @@
-from PY_GUI import Main
+try:
+    from . import Main
+except ImportError:
+    from __init__ import Main
 def parse(text):
     return text
 def main():

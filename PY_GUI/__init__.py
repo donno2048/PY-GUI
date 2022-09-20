@@ -5,7 +5,7 @@ from pygame_gui.elements.ui_text_box import UITextBox
 from pygame_gui.elements.ui_text_entry_line import UITextEntryLine
 from pygame_gui.windows import UIColourPickerDialog
 from pygame_gui import UIManager
-from pygame import init, display, Rect, Surface, quit
+from pygame import init, display, Rect, Surface, quit, USEREVENT
 from pygame.display import update
 from pygame.mouse import set_visible
 from pygame.time import Clock
@@ -37,7 +37,7 @@ class Exit(UIButton):
     def __init__(self, pos, manager): super().__init__(Rect(pos, (150, 30)), "exit", manager)
     def process_event(self, event):
         super().process_event(event)
-        if event.type == 32774 and event.user_type == 'ui_button_pressed' and self.pressed: exit(quit())
+        if event.type == USEREVENT and event.user_type == 'ui_button_pressed' and self.pressed: exit(quit())
 class Clear(UIButton):
     def __init__(self, pos, manager, cats = None):
         super().__init__(Rect(pos, (150, 30)), "clear", manager)
@@ -45,7 +45,7 @@ class Clear(UIButton):
         self.manager = manager
     def process_event(self, event):
         super().process_event(event)
-        if event.type == 32774 and event.user_type == 'ui_button_pressed' and self.pressed:
+        if event.type == USEREVENT and event.user_type == 'ui_button_pressed' and self.pressed:
             for cat in self.cats:
                 cat.textbox.kill()
                 cat.textbox = UITextBox("", relative_rect = Rect(0, 0, 368, 200), manager = self.manager, container = cat, anchors = {"left": "left", "right": "right", "top": "top", "bottom": "bottom"})
@@ -61,14 +61,14 @@ class Spawn(UIButton):
         self.name = name
     def process_event(self, event):
         super().process_event(event)
-        if event.type == 32774 and event.user_type == 'ui_button_pressed' and self.pressed: self.clear.cats.append(Cat((randint(0, self.dims[0] - 385 ), randint(0, self.dims[1] - 300)), self.manager, self.clear, self.parse, self.name))
+        if event.type == USEREVENT and event.user_type == 'ui_button_pressed' and self.pressed: self.clear.cats.append(Cat((randint(0, self.dims[0] - 385 ), randint(0, self.dims[1] - 300)), self.manager, self.clear, self.parse, self.name))
 class Killer(UIButton):
     def __init__(self, pos, manager, clear):
         super().__init__(Rect(pos, (150, 30)), "kill", manager)
         self.clear = clear
     def process_event(self, event):
         super().process_event(event)
-        if event.type == 32774 and event.user_type == 'ui_button_pressed' and self.pressed: self.clear.kill_all()
+        if event.type == USEREVENT and event.user_type == 'ui_button_pressed' and self.pressed: self.clear.kill_all()
 class Paint(UIButton):
     paint = None
     def __init__(self, pos, manager):
@@ -76,8 +76,8 @@ class Paint(UIButton):
         self.manager = manager
     def process_event(self, event):
         super().process_event(event)
-        if event.type == 32774 and event.user_type == 'ui_button_pressed' and self.pressed and (self.paint is None): self.paint = UIColourPickerDialog(Rect((100, 100, 600, 400)), self.manager, window_title = "Set Background Color")
-        if event.type == 32774 and (event.user_type == 17 or (event.user_type == 'ui_button_pressed' and self.paint is not None and event.ui_element in [self.paint.cancel_button, self.paint.close_window_button])): self.paint = None
+        if event.type == USEREVENT and event.user_type == 'ui_button_pressed' and self.pressed and (self.paint is None): self.paint = UIColourPickerDialog(Rect((100, 100, 600, 400)), self.manager, window_title = "Set Background Color")
+        if event.type == USEREVENT and (event.user_type == 17 or (event.user_type == 'ui_button_pressed' and self.paint is not None and event.ui_element in [self.paint.cancel_button, self.paint.close_window_button])): self.paint = None
 class Main:
     def __init__(self, parse, name = ""):
         init()
@@ -97,7 +97,7 @@ class Main:
         while True: self.process_events()
     def process_events(self):
         for event in get():
-            if event.type == 32774 and event.user_type == 17: self.BG.fill(event.colour[:-1])
+            if event.type == USEREVENT and event.user_type == 17: self.BG.fill(event.colour[:-1])
             self.MANAGER.process_events(event)
         self.MANAGER.update(self.clock.tick(60) / 1000)
         self.SCREEN.blit(self.BG, (0, 0))
